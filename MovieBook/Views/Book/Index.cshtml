@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MovieBook.Models.Bookings>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div class="container mt-5">
+    <table class="table table-striped text-white">
+        <tr>
+            <th class="text-white">
+                @Html.DisplayNameFor(model => model.UserID)
+            </th>
+            <th class="text-white">
+                @Html.DisplayNameFor(model => model.Movie)
+            </th>
+            <th class="text-white">
+                @Html.DisplayNameFor(model => model.Cinema)
+            </th>
+            <th class="text-white">
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th class="text-white">
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-white">
+                    @Html.DisplayFor(modelItem => item.UserID)
+                </td>
+                <td class="text-white">
+                    @Html.DisplayFor(modelItem => item.Movie)
+                </td>
+                <td class="text-white">
+                    @Html.DisplayFor(modelItem => item.Cinema)
+                </td>
+                <td class="text-white">
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td class="text-white">
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td class="text-white">
+                    <a href="~/Book/Delete/@item.BookingID" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

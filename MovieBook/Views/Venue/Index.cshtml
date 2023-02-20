@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MovieBook.Models.Cinema>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    #cinema-img {
+        transition: transform .5s;
+    }
+
+        #cinema-img:hover {
+            transform: scale(1.03);
+        }
+</style>
+    <div class="align-items-center" style="max-width:100%; background-image:url('https://cdn.abcotvs.com/dip/images/6011023_031320-cc-ss-empty-theater-img.jpg?w=800&r=16%3A9');
+     background-repeat: no-repeat;  background-size:100%; position:relative;">
+
+        <div class="container">
+            <div class="row align-items-center" style="height: 400px;">
+                <div class="col-12 text-center">
+                    <h2 class="display-2 text-white fw-bold">Cinemas</h2>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+        <div class="container my-5">
+            <div class="row mt-5 justify-content-center">
+                @foreach (var cinema in Model)
+                {
+                <div class="col-4 ">
+                    <div>
+                        <a href="/Venue/Bookings/@cinema.CinemaID">
+                            <img id="cinema-img" class="img rounded-circle mx-auto d-block" src="@cinema.Logo" />
+                        </a>
+                    </div>
+                    <div class="text-center">
+                        <p class="caption" style="margin-top: 10px">@cinema.Name</p>
+                    </div>
+                </div>
+                   
+                }
+            </div>
+        </div>

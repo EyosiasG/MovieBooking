@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MovieBook.Models.Schedule>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container mt-5">
+    <p class="text-center">
+        @Html.ActionLink("Add Schedule", "Create", "Schedule", htmlAttributes: new { id = "loginLink", @class = "btn btn-primary" })
+    </p>
+    <table class="table table-striped text-white">
+        <tr class="text-white">
+            <th class="text-white">
+                @Html.DisplayNameFor(model => model.Movie)
+            </th>
+            <th class="text-white">
+                @Html.DisplayNameFor(model => model.Cinema)
+            </th>
+            <th class="text-white">
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th class="text-white">
+                @Html.DisplayNameFor(model => model.BookPrice)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr class="text-white">
+                <td class="text-white">
+                    @Html.DisplayFor(modelItem => item.Movie)
+                </td>
+                <td class="text-white">
+                    @Html.DisplayFor(modelItem => item.Cinema)
+                </td>
+                <td class="text-white">
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td class="text-white">
+                    @Html.DisplayFor(modelItem => item.BookPrice)
+                </td>
+                <td class="text-white">
+                    <a href="~/Schedule/Detail/@item.ScheduleID" class="btn btn-primary btn-sm">Detail</a> |
+                    <a href="~/Schedule/Edit/@item.ScheduleID" class="btn btn-success btn-sm">Edit</a> |
+                    <a href="~/Schedule/Delete/@item.ScheduleID" class="btn btn-danger btn-sm">Delete</a> 
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

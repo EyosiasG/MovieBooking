@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right, text-white", style="text-decoration:none; " }))
+    {
+    @Html.AntiForgeryToken()
+
+<ul class="nav navbar-nav navbar-right">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            @User.Identity.GetUserName()
+        </a>
+        <ul class="dropdown-menu bg-black" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item text-white" href="/Manage/ChangePassword">Change Password</a></li>
+            <li><a class="dropdown-item text-white" href="/Manage/ManageLogins">ManageLogins</a></li>
+        </ul>
+    </li>
+   @* <li>
+        @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "text-white", style = "text-decoration:none; font-size:14px" })
+    </li>*@
+    <li>
+        <a class="btn btn-success btn-sm ms-2 mt-1" href="~/Book/BookingList">My Bookings</a>
+    </li>
+    <li><a class="text-white btn btn-danger btn-sm ms-2 mt-1" style="text-decoration:none;" href="javascript:document.getElementById('logoutForm').submit()">Sign Out</a></li>
+</ul>
+    }
+}
+else
+{
+    <div class="row">
+        <div class="col-6">
+            @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class ="text-white btn btn-success btn-sm" , style="text-decoration:none;"})
+        </div>
+        <div class="col-6">
+            @Html.ActionLink("Sign In", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" ,@class = "text-white btn btn-primary btn-sm", style="text-decoration:none;" })
+        </div>
+    </div>
+        
+    
+}

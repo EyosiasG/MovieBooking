@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Contact";
+
+}
+<div class="container mt-5 text-center justify-content-center" style="width: 800px; border:ridge;">
+    <div class="contact-container">
+        <h1 style="font-weight:400; font-size:30px">
+            Having doubts or questions?
+        </h1>
+        <p style="font-weight:200; font-size:20px">
+            We would love to hear from you
+        </p>
+        <hr />
+    </div>
+
+    <div class="contact-form">
+        @Html.Label("First name:", new { @class = "form-text" })
+        @Html.TextBox("fname", "", new { @placeholder = "John", @class = "form-textbox" })
+        <br /><br />
+        @Html.Label("Last name:", new { @class = "form-text" })
+        @Html.TextBox("lname", "", new { @placeholder = "Doe", @class = "form-textbox" })
+        <br /> <br />
+        @Html.Label("Phone number:", new { @class = "form-text" })
+        @Html.TextBox("phoneno", "", new { @placeholder = "+251912345678", @class = "form-textbox" })
+        <br /> <br />
+        @Html.Label("Email:", new { @class = "form-text" })
+        @Html.TextBox("email", "", new { @placeholder = "example@gmail.com", type = "email", @class = "form-textbox" })
+
+        <br /> <br />
+        @Html.Label("Issue about:", new { @class = "form-text" })
+        <div>
+            @Html.TextArea("issue", "", new { rows = "10", cols = "50", @placeholder = "My issue is.....", @class = "form-textarea" })
+
+        </div>
+
+        <br /> <br />
+        <button class="btn btn-secondary mb-2">Submit</button>
+
+    </div>
+</div>

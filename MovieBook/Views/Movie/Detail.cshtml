@@ -1,0 +1,93 @@
+﻿@model MovieBook.Models.Movie
+
+@{
+    ViewBag.Title = "Detail";
+}
+  <div class="container">
+        <div class="row", style="padding:30px">
+            <div class="col">
+                <img class="rounded-3 float-end" style="height:300px; width:200px;" src="@Model.ImageURL" />
+            </div>
+
+            <div class="col-8">
+                <div class="mb-5">
+                    <h2 class="display-1">@Model.Name</h2>
+                    <hr />
+                </div>
+                <div>
+                    @if (Model.Genre == "1")
+                    {
+                        <p class="fs-5 fw-light">
+                            Action
+                        </p>
+                    }
+                    else if (Model.Genre == "2")
+                    {
+                        <p class="fs-5 fw-light">
+                            Action
+                        </p>
+                    }
+                    else if (Model.Genre == "3")
+                    {
+                        <p class="fs-5 fw-light">
+                            Action
+                        </p>
+                    }
+                    else if (Model.Genre == "4")
+                    {
+                        <p class="fs-5 fw-light">
+                            Action
+                        </p>
+                    }
+                    else if (Model.Genre == "5")
+                    {
+                        <p class="fs-5 fw-light">
+                            Action
+                        </p>
+                    }
+                    else if (Model.Genre == "6")
+                    {
+                        <p class="fs-5  fw-light">
+                            Action
+                        </p>
+                    }
+                </div>
+                <div>
+                    <p class="fs-5 fw-light">
+                        @Model.Ratings
+                    </p>
+                </div>
+                <div>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.MovieID }, htmlAttributes: new { @class = "btn btn-danger" }) 
+                    @Html.ActionLink("Back to List", "Index", new { id = "backtoList"} , htmlAttributes: new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+        <div>
+            <h5 class="display-4 mt-5">About the Movie</h5>
+            <hr />
+            <p>@Model.Description</p>
+
+        </div>
+        <div>
+            <h5 class="display-4 mt-5">Casts and Crew</h5>
+            <hr />
+            <div class="row">
+                <div class="col">
+                    @{ 
+                        List<string> actors = Model.Actors.Split(',').ToList();
+                    }
+                    @foreach(var actor in actors)
+                    {
+                        <p>@actor - <span class="fw-bold"> Actor </span></p>
+                    }
+                </div>
+                <div class="col">
+                    <p>@Model.Producer - <span class="fw-bold">Producer</span></p>
+                    <p>@Model.Director - <span class="fw-bold">Director</span></p>
+                    <p>@Model.Writer - <span class="fw-bold">Writer</span></p>
+                </div>
+            </div>
+
+        </div>
+    </div>

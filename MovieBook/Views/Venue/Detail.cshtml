@@ -1,0 +1,114 @@
+﻿@model MovieBook.Models.Cinema
+
+@{
+    ViewBag.Title = "Detail";
+}
+<style>
+</style>
+<div style="max-width:100%; background-image:url('https://coolbackgrounds.io/images/backgrounds/black/black-radial-gradient-bb05ed79.jpg');
+     background-repeat: no-repeat;  background-size:100%;">
+    <div class="container">
+        <div class="row align-items-center" style="height: 500px;">
+            <div class="col-6">
+                <img style="height: 250px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi_tNcywtwLZPn_N56slI2uELnsghsTuoQ4Q&usqp=CAU" />
+            </div>
+            <div class="col-6">
+                <div class="mb-5">
+                    <h2 class="display-1 text-white">Century Mall</h2>
+                    <hr style="color:white;" />
+                </div>
+                <div>
+                    <p class="fs-5 text-white fw-light">
+                        Located in GurdSholla, Century Cinema features
+                        3 state-of-the-art halls with total capacity of 700 seats displaying Hollywood and Ethiopian movies
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-light" style="position:relative">
+    <div class="container">
+        <div class ="row">
+            <section id="schedules" class="mt-5">
+                <div class="container-lg">
+                    <div class="text-center">
+                        <h2>Scheduled Shows</h2>
+                        <p class="lead text-muted">Choose your show</p>
+                    </div>
+                </div>
+            </section>
+            <div class="row my-5 align-items-center justify-content-center">
+                <div class="col-10">
+                    <div class="card border-0">
+                        <div class="card-body text-center py-4">
+                            Date
+                        </div>
+                        <div class="card-body">
+                            @foreach (var movies in ViewBag.Movies)
+                            {
+                                <div class="row align-items-center justify-content-end">
+
+                                    <div class="col-lg-4 m-lg-4 justify-content-end">
+                                        <img class="rounded-3 float-end" style="height:350px; width:250px;" src="@movies.ImageURL" />
+                                    </div>
+
+                                    <div class="col text-start">
+                                        <div>
+                                            <h2 class="display-6 mb-5">@movies.Name</h2>
+                                        </div>
+                                        @foreach (var schedule in ViewBag.Schedule)
+                                        {
+                                            if (string.Compare(movies.Name, schedule.Movie) == 0)
+                                            {
+                                                string Day = schedule.Time.ToString("yyyy-MM-dd");
+                                                <div>
+                                                    <p>
+                                                        @Day
+                                                    </p>
+                                                </div>
+
+                                                foreach (var dates in ViewBag.Schedule)
+                                                {
+                                                    string Time = schedule.Time.ToString("HH:mm");
+                                                    string _Day = dates.Time.ToString("yyyy-MM-dd");
+                                                    if (String.Compare(Day, _Day) == 0 && string.Compare(movies.Name, dates.Movie) == 0)
+                                                    {
+
+                                    <div>
+                                        @Html.ActionLink(Time, "AddBooking", "Book", routeValues: new { userID = ViewBag.UserID, scheduleID = dates.ScheduleID },
+                                        htmlAttributes: new { @class = "btn btn-outline-success" , @type ="submit" })
+                                        <input type="submit" value="Create" class="btn btn-primary" onclick="location.href='@Url.Action("Book","AddBookings", new { userID=ViewBag.UserID ,  scheduleID = dates.ScheduleID})'"/>
+
+                                    </div>
+                                                    }
+
+                                                }
+
+
+
+
+
+
+
+                                            }
+                                        }
+
+
+
+
+
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+        </div>
+    </div>
+
+</div>
+
+

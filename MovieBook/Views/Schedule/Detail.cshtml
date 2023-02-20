@@ -1,0 +1,42 @@
+﻿@model MovieBook.Models.Schedule
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail</h2>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-6 text-end">
+            @Html.DisplayNameFor(model => model.Movie):
+        </div>
+        <div class="col-6">
+            @Html.DisplayFor(model => model.Movie)
+        </div>
+        <div class="col-6 text-end">
+            @Html.DisplayNameFor(model => model.Cinema):
+        </div>
+        <div class="col-6">
+            @Html.DisplayFor(model => model.Cinema)
+        </div>
+        <div class="col-6 text-end">
+            @Html.DisplayNameFor(model => model.Time):
+        </div>
+        <div class="col-6">
+            @Html.DisplayFor(model => model.Time)
+        </div>
+        <div class="col-6 text-end">
+            @Html.DisplayNameFor(model => model.BookPrice):
+        </div>
+        <div class="col-6">
+            @Html.DisplayFor(model => model.BookPrice)
+        </div>
+
+    </div>              
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ScheduleID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

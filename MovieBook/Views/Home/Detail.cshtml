@@ -1,0 +1,108 @@
+﻿@model MovieBook.Models.Movie
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+
+
+<div style="max-width:100%; background-image:url('https://coolbackgrounds.io/images/backgrounds/black/black-radial-gradient-bb05ed79.jpg');
+     background-repeat: no-repeat;  background-size:100%;">
+    <div class="container">
+        <div class="row align-items-center" style="height: 500px;">
+            <div class="col-4">
+                <img class="float-end" style="height: 400px;" src="@Model.ImageURL" />
+            </div>
+            <div class="col-8">
+                <div class="mb-5">
+                    <h2 class="display-1 text-white">@Model.Name</h2>
+                    <hr style="color:white;" />
+                </div>
+                <div>
+                    @if (Model.Genre == "1")
+                    {
+                        <p class="fs-5 text-white fw-light">
+                            Action
+                        </p>
+                    }
+                    else if (Model.Genre == "2")
+                    {
+                        <p class="fs-5 text-white fw-light">
+                            Comedy
+                        </p>
+                    }
+                    else if (Model.Genre == "3")
+                    {
+                        <p class="fs-5 text-white fw-light">
+                            Action
+                        </p>
+                    }
+                    else if (Model.Genre == "4")
+                    {
+                        <p class="fs-5 text-white fw-light">
+                            Action
+                        </p>
+                    }
+                    else if (Model.Genre == "5")
+                    {
+                        <p class="fs-5 text-white fw-light">
+                            Action
+                        </p>
+                    }
+                    else if (Model.Genre == "6")
+                    {
+                        <p class="fs-5 text-white fw-light">
+                            Action
+                        </p>
+                    }
+                    else if (Model.Genre == "2")
+                    {
+                        <p class="fs-5 text-white fw-light">
+                            Action
+                        </p>
+                    }
+                </div>
+                <div>
+                    <p class="fs-5 text-white fw-light">
+                        @Model.Ratings
+                    </p>
+                </div>
+                <div>
+                    <a href="/Home/Bookings/@Model.MovieID" class="btn btn-danger btn-lg">
+                        Book Movie
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div>
+        <h5 class="display-4 mt-5">About the Movie</h5>
+        <hr />
+        <p>@Model.Description</p>
+
+    </div>
+    <div>
+        <h5 class="display-4 mt-5">Casts and Crew</h5>
+        <hr />
+        <div class="row">
+            <div class="col">
+                @{
+                    List<string> actors = Model.Actors.Split(',').ToList();
+                }
+                @foreach (var actor in actors)
+                {
+                    <p>@actor - <span class="fw-bold"> Actor </span></p>
+                }
+            </div>
+            <div class="col">
+                <p>@Model.Producer - <span class="fw-bold">Producer</span></p>
+                <p>@Model.Director - <span class="fw-bold">Director</span></p>
+                <p>@Model.Writer - <span class="fw-bold">Writer</span></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+

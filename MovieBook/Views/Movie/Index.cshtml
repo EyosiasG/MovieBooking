@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MovieBook.Models.Movie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="text-black" style="position:relative">
+    <div class="container">
+        <div class="row">
+            <div class="row my-5 align-items-center justify-content-center">
+                <div class="col-10">
+                    <div class="card border-0">
+                        <div class="card-body text-center py-4">
+                            Movies
+                        </div>
+
+                        <p class="text-center">
+                            @Html.ActionLink("Add Movie", "Create", "Movie", htmlAttributes: new { id = "loginLink", @class = "btn btn-primary" })
+                        </p>
+                        <div class="card-body">
+                            @foreach (var movies in Model)
+                            {
+                                <div class="row align-items-center justify-content-end">
+                                    <div class="col-lg-4 m-lg-4 justify-content-end">
+                                        <img class="rounded-3 float-end" style="height:350px; width:250px;" src="@movies.ImageURL" />
+                                    </div>
+                                    <div class="col text-start">
+                                        <div>
+                                            <h2 class="display-6 mb-5">@movies.Name</h2>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <a href="~/Movie/Detail/@movies.MovieID" class="btn btn-primary btn">Detail</a>
+                                                <a href="~/Movie/Edit/@movies.MovieID" class="btn btn-success btn">Edit</a>
+                                                <a href="~/Movie/Delete/@movies.MovieID" class="btn btn-danger btn">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+

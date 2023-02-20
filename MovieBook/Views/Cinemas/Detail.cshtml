@@ -1,0 +1,25 @@
+﻿@model MovieBook.Models.Cinema
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<div class="container mt-5">
+    <div class="row" , style="padding:30px">
+        <div class="col-4">
+            <img class="rounded-3 float-end" style="height:200px; width:200px;" src="@Model.Logo" />
+        </div>
+
+        <div class="col-8">
+            <h2>@Model.Name</h2>
+            <p>@Model.Description</p>
+            <p class="mt-5">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.CinemaID }, htmlAttributes: new { @class = "btn btn-danger" }) |
+                @Html.ActionLink("Back to List", "Index", new { id = "backtoList" }, htmlAttributes: new { @class = "btn btn-primary" })
+            </p>
+        </div>
+
+       
+    </div>
+    </div>
+

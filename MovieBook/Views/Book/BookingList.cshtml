@@ -1,0 +1,74 @@
+﻿@model IEnumerable<MovieBook.Models.Bookings>
+
+@{
+    ViewBag.Title = "BookingList";
+}
+
+<div class="text-black" style="position:relative">
+    <div class="container">
+        <div class="row">
+            <div class="row my-5 align-items-center justify-content-center">
+                <div class="col-10">
+                    <div class="card border-0">
+                        <div class="card-body text-center py-4">
+                            <h2 class="display-6">Booked Shows</h2>
+                         
+                        </div>
+                        <div class="card-body">
+                            @foreach (var booking in Model)
+                            {
+                                <div class="row align-items-center justify-content-end">
+                                    <div class="col-lg-4 m-lg-4 justify-content-end">
+                                        @foreach (var movie in ViewBag.Movie)
+                                        {
+                                            if (booking.Movie == movie.Name)
+                                            {
+                                                <img class="rounded-3 float-end" style="height:200px; width:150px;" src="@movie.ImageURL" />
+                                            }
+                                        }
+                                    </div>
+
+                                    <div class="col text-start">
+                                        <div>
+                                            <h2 class="display-6 mb-1">@booking.Movie</h2>
+                                        </div>
+                                        <div>
+                                            <h2 class="display-6 fs-5">Venue:<span>@booking.Cinema</span></h2>
+                                        </div>
+                                        <div>
+                                            @{
+                                                string Date = booking.Time.ToLongDateString();
+                                                string Time = booking.Time.ToLongTimeString();
+
+                                            }
+                                            <h2 class="display-6 fs-5">Date:<span>@Date</span></h2>
+                                        </div>
+                                        <div>
+                                            <h2 class="display-6 fs-5">Time:<span>@Time</span></h2>
+                                        </div>
+                                        <div>
+                                            <h2 class="display-6 fs-5">Price:<span>@booking.Price</span></h2>
+                                        </div>
+                                        <div>
+                                            <h2 class="display-6 fs-5">ID:<span>@booking.BookingID</span></h2>
+                                        </div>
+                                        <div>
+                                            <a href="~/Book/Delete/@booking.BookingID" class="btn btn-success btn-lg float-end mb-2">Cancel Booking</a>
+                                        </div>
+
+                                    </div>
+
+                                <hr />
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+

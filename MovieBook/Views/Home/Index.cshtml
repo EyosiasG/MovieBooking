@@ -1,0 +1,131 @@
+﻿@model List<MovieBook.Models.Movie>
+
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    #movie-img {
+        transition: transform .5s;
+    }
+    #movie-img:hover {
+        transform: scale(1.03);
+
+    }
+</style>
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner" style="height: 500px;">
+            <div class="carousel-item active">
+                <img src="~/Images/Carousel/carousel-img-1.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="~/Images/Carousel/carousel-img-2.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="~/Images/Carousel/carousel-img-3.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="rows" style="margin-top:30px;">
+            <div class="col-md-12">
+                <div class="page-headers">
+                    <h2 class="text-white display-6 mt-3">Trending</h2>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row" style="margin-top:15px;">
+            @foreach (var movie in ViewBag.TrendingMovies)
+            {
+                <div class="col-md-3 col-sm-3 col-xs-6  mb-3" style="margin-bottom:8px">
+                    <div class="mb-3" style="max-width: 300px">
+                        <div class="thumbnail">
+
+                            <a href="/Home/Detail/@movie.MovieID">
+                                    <img id="movie-img" class="img-responsive rounded-3" title="Click to view movie detail" style="height:400px;width:100%;"
+                                         src="@movie.ImageURL" />
+                            
+                              
+                            </a>
+                            <div class="caption text-white text-center" style="margin-left: 5px; margin-top: 10px">
+                                @movie.Name
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <h3 class="display-6 mt-3">Action</h3>
+            @foreach (var movie in ViewBag.ActionMovies)
+            {
+
+                <div class="col-md-3 col-sm-3 col-xs-6  mb-3" style="margin-bottom:8px">
+                    <div class="mb-3" style="max-width: 300px">
+                        <div class="thumbnail" style="">
+                            <a href="/Home/Detail/@movie.MovieID">
+                                <img id = "movie-img" class="img-responsive rounded-3" title="Click to view movie detail" style="height:400px;width:100%"
+                                     src="@movie.ImageURL" />
+                            </a>
+                            <div class="caption text-white text-center" style="margin-left: 5px; margin-top: 10px">
+                                @movie.Name
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <h3 class="display-6 mt-3">Horror</h3>
+            @foreach (var movie in ViewBag.HorrorMovies)
+            {
+                <div class="col-md-3 col-sm-3 col-xs-6  mb-3" style="margin-bottom:8px">
+                    <div class="mb-3" style="max-width: 300px">
+                        <div class="thumbnail" style="">
+                            <a href="/Home/Detail/@movie.MovieID">
+                                <img id = "movie-img" class="img-responsive rounded-3" title="Click to view movie detail" style="height:400px;width:100%"
+                                     src="@movie.ImageURL" />
+                            </a>
+                            <div class="caption text-white text-center" style="margin-left: 5px; margin-top: 10px">
+                                @movie.Name
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            @foreach (var movie in ViewBag.ComedyMovies)
+            {
+                <h3 class="display-6 mt-3">Comedy</h3>
+                <div class="col-md-3 col-sm-3 col-xs-6  mb-3" style="margin-bottom:8px">
+                    <div class="mb-3" style="max-width: 300px">
+                        <div class="thumbnail" style="">
+                            <a href="/Home/Detail/@movie.MovieID">
+                                <img class="img-responsive rounded-3" title="Click to view movie detail" style="height:400px;width:100%"
+                                     src="@movie.ImageURL" />
+                            </a>
+                            <div class="caption text-white text-center" style="margin-left: 5px; margin-top: 10px">
+                                @movie.Name
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>

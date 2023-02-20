@@ -1,0 +1,126 @@
+﻿@model IEnumerable<MovieBook.Models.Schedule>
+
+@{
+    ViewBag.Title = "AddBooking";
+}
+
+<div style="max-width:100%; background-image:url('https://coolbackgrounds.io/images/backgrounds/black/black-radial-gradient-bb05ed79.jpg');
+     background-repeat: no-repeat;  background-size:100%;">
+    <div class="container">
+        <div class="row align-items-center" style="height: 500px;">
+            <div class="col-4">
+                <img class="float-end" style="height: 400px;" src="@ViewBag.MovieImage" />
+            </div>
+            <div class="col-8">
+                <div class="mb-5">
+                    <h2 class="display-1 text-white">@ViewBag.MovieName</h2>
+                    <hr style="color:white;" />
+                </div>
+                <div>
+                    @if (ViewBag.MovieGenre == "1")
+                    {
+                        <p class="fs-5 text-white fw-light">
+                            Action
+                        </p>
+                    }
+                    else if (ViewBag.MovieGenre == "2")
+                    {
+                        <p class="fs-5 text-white fw-light">
+                            Action
+                        </p>
+                    }
+                    else if (ViewBag.MovieGenre == "3")
+                    {
+                        <p class="fs-5 text-white fw-light">
+                            Action
+                        </p>
+                    }
+                    else if (ViewBag.MovieGenre == "4")
+                    {
+                        <p class="fs-5 text-white fw-light">
+                            Action
+                        </p>
+                    }
+                    else if (ViewBag.MovieGenre == "5")
+                    {
+                        <p class="fs-5 text-white fw-light">
+                            Action
+                        </p>
+                    }
+                    else if (ViewBag.MovieGenre == "6")
+                    {
+                        <p class="fs-5 text-white fw-light">
+                            Action
+                        </p>
+                    }
+                </div>
+                <div>
+                    <p class="fs-5 text-white fw-light">
+                        @ViewBag.MovieRatings
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-light" style="position:relative">
+    <div class="container">
+        <div class="row">
+            <section id="schedules" class="mt-5">
+                <div class="container-lg">
+                    <div class="text-center">
+                        <h2>Scheduled Shows</h2>
+                        <p class="lead text-muted">Choose your show</p>
+                    </div>
+                </div>
+            </section>
+            <div class="row my-5 align-items-center justify-content-center">
+                <div class="col-10">
+                    <div class="card border-0">
+                        <div class="card-body text-center py-4">
+                            Date
+                        </div>
+                        <div class="card-body">
+                            @foreach (var cinema in ViewBag.Cinema)
+                            {
+                                foreach (var schedule in Model)
+                                {
+                                    if (string.Compare(cinema, schedule.Cinema) == 0)
+                                    {
+                                        <div class="row align-items-center justify-content-end">
+
+                                            <div class="col-lg-4 m-lg-4 justify-content-end">
+                                                <img class="rounded-3 float-end" style="height:350px; width:250px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrdPsGJEBxBev7gKo_EMp0Pgk7Q7su_xTUxf3vo8dE9S_CiG2Z" />
+                                            </div>
+                                            <div class="col text-start">
+                                                <div>
+                                                    <a href="" class="btn btn-outline-success">
+                                                        7:00AM
+                                                    </a>
+                                                    <a href="" class="btn btn-outline-success">
+                                                        7:00AM
+                                                    </a>
+                                                    <a href="" class="btn btn-outline-success">
+                                                        7:00AM
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    }
+                                }
+
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+

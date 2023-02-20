@@ -1,0 +1,97 @@
+﻿@model MovieBook.Models.Bookings
+
+@{
+    ViewBag.Title = "Bookings";
+}
+
+<div style="max-width:100%; background-image:url('https://coolbackgrounds.io/images/backgrounds/black/black-radial-gradient-bb05ed79.jpg');
+     background-repeat: no-repeat;  background-size:100%;">
+    <div class="container">
+        <div class="row align-items-center" style="height: 500px;">
+            <div class="col-4">
+                <img class="float-end" style="height:400px;" src="@ViewBag.Movie.ImageURL" />
+            </div>
+            <div class="col-8">
+                <div class="mb-5">
+                    <h2 class="display-1 text-white">@ViewBag.Movie.Name</h2>
+                    <hr style="color:white;" />
+                </div>
+                <div>
+                    <p class="fs-5 text-white fw-light">
+                       @ViewBag.Movie.Description
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="position:relative">
+    <div class="container text-black">
+        <div class="row">
+            <section id="schedules" class="mt-5">
+                <div class="container-lg">
+                    <div class="text-center">
+                        <h2>Scheduled Shows</h2>
+                        <p class="lead text-muted">Choose your show</p>
+                    </div>
+                </div>
+            </section>
+            <div class="row my-5 align-items-center justify-content-center">
+                <div class="col-10">
+                    <div class="card border-0">
+                        <div class="card-body text-center py-4">
+                            Date
+                        </div>
+                        <div class="card-body">
+                            @foreach (var cinema in ViewBag.Cinemas)
+                            {
+                                <div class="row align-items-center justify-content-end">
+
+                                    <div class="col-lg-4 m-lg-4 justify-content-end">
+                                        <img class="rounded-3 float-end" style="height:200px; width:200px;" src="@cinema.Logo" />
+                                    </div>
+
+                                    <div class="col text-start">
+                                        <div>
+                                            <h2 class="display-6 mb-5">@cinema.Name</h2>
+                                        </div>
+                                        @foreach (var schedule in ViewBag.Schedule)
+                                        {
+                                            if (string.Compare(cinema.Name, schedule.Cinema) == 0)
+                                            {
+                                                string Day = schedule.Time.ToString("yyyy-MM-dd");
+                                                string strDate = schedule.Time.ToLongDateString();
+                                                <div>
+                                                    <p>
+                                                        @strDate
+                                                    </p>
+                                                </div>
+
+                                                foreach (var dates in ViewBag.Schedule)
+                                                {
+                                                    string Time = schedule.Time.ToString("HH:mm");
+                                                    string _Day = dates.Time.ToString("yyyy-MM-dd");
+                                                    if (String.Compare(Day, _Day) == 0 && string.Compare(cinema.Name, dates.Cinema) == 0)
+                                                    {
+                                                        <div>
+                                                            @Html.ActionLink(Time, "CreateBooking", "Home", routeValues: new { id = dates.ScheduleID },
+                                                            htmlAttributes: new { @class = "btn btn-sm btn-outline-success",})
+
+                                                        </div>
+                                                    }
+                                                }
+
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                                <hr />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
